@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ContatoController;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 
 /**
@@ -65,6 +66,11 @@ public class Cliente extends javax.swing.JInternalFrame {
         jPanelAcoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações do Usuario"));
 
         btnCriar.setText("Criar");
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
 
         btnListar.setText("Listar");
 
@@ -242,7 +248,7 @@ public class Cliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9)
                     .addComponent(jTextFieldDefeito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDispositivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelDispositivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jTextFieldPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -254,15 +260,24 @@ public class Cliente extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "CPF", "Telefone", "Status"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -296,8 +311,6 @@ public class Cliente extends javax.swing.JInternalFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanelAcoes.getAccessibleContext().setAccessibleName("Ações do Usuario");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,6 +321,18 @@ public class Cliente extends javax.swing.JInternalFrame {
     private void jCheckBoxNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxNoteActionPerformed
+
+    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
+        String nome = jTextFieldNome.getText();
+        String cpf = jTextFieldCpf.getText();
+        String telefone = jTextFieldTelefone.getText();
+        String cep = jTextFieldCidade.getText();
+        String data = jTextFieldData.getText();
+      
+        ContatoController novoContato = new ContatoController();
+        novoContato.cadastrarContato(nome, cpf, telefone, cep, data);
+        
+    }//GEN-LAST:event_btnCriarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

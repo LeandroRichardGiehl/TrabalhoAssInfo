@@ -46,16 +46,15 @@ public class TelaInicial extends javax.swing.JFrame {
         planoDeFundoLayout.setHorizontalGroup(
             planoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(planoDeFundoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         planoDeFundoLayout.setVerticalGroup(
             planoDeFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(planoDeFundoLayout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(143, 143, 143)
                 .addComponent(jLabel1)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         jMenu2.setText("File");
