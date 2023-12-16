@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.ContatoBancoDados;
+import java.util.ArrayList;
 
 public class ContatoModel {
     
@@ -75,5 +76,9 @@ public class ContatoModel {
        ContatoBancoDados novoRegistro = new ContatoBancoDados();
        novoRegistro.inserirContatoBD(novoCadastro);
        
+   }
+   
+   public ArrayList<ContatoModel> listarContatos(){
+       return new ContatoBancoDados().listarTodosContatos();
    }
 }

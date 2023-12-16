@@ -5,7 +5,11 @@
 package View;
 
 import Controller.ContatoController;
+import Model.ContatoModel;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -330,10 +334,42 @@ public class Cliente extends javax.swing.JInternalFrame {
         String data = jTextFieldData.getText();
       
         ContatoController novoContato = new ContatoController();
-        novoContato.cadastrarContato(nome, cpf, telefone, cep, data);
+        novoContato.cadastrarContato(nome, cpf, telefone, cep, data);  
         
+        listarContatosView();
     }//GEN-LAST:event_btnCriarActionPerformed
+    
+    public void listarContatosView() {
 
+       
+       
+        try {
+
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            ContatoController contatoControler = new ContatoController();
+            ArrayList<ContatoModel> listaContatos = contatoControler.listarContatosController();
+            Iterator<ContatoModel> iterator = listaContatos.iterator();
+
+            while (iterator.hasNext()) {
+                ContatoModel contato = iterator.next();
+                System.out.println("Dados: " + contato);
+                dtm.addRow(new Object[]{
+                    contato.getId(),
+                    contato.getNome(),
+                    contato.getCpf(),
+                    contato.getTelefone(),
+                    contato.getCep(),
+                    contato.getData()
+                  
+                });
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;

@@ -11,7 +11,7 @@ public class ContatoBancoDados {
     
     public void inserirContatoBD(ContatoModel novoContato) {
 
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, status) values (?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (nome, cpf, telefone, status, cep) values (?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;
         Connection connection = null;
 
@@ -74,8 +74,8 @@ public class ContatoBancoDados {
                     contato.setNome(rs.getString("nome"));
                     contato.setCpf(rs.getString("cpf"));
                     contato.setTelefone(rs.getString("telefone"));
+                    contato.setData(rs.getString("status"));
                     contato.setCep(rs.getString("cep"));
-                    contato.setData(rs.getString("data"));
                     listaContatos.add(contato);
                 }
             }
@@ -101,6 +101,7 @@ public class ContatoBancoDados {
                 e.printStackTrace();
             }
         }
+        System.out.println("Lista" + listaContatos);
         return listaContatos;
     }
     

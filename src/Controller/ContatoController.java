@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.ContatoModel;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,4 +24,9 @@ public class ContatoController {
             JOptionPane.showMessageDialog(null, "Preencha os campos corretamente");
         }
     }
+        public ArrayList<ContatoModel> listarContatosController(){
+            ContatoModel contato = new ContatoModel();
+            return contato.listarContatos();
+        }
 }
+
